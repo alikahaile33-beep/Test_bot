@@ -8,7 +8,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("أرسل /start")
 
 def main():
-    TOKEN = "ضع_التوكن_هنا_بالضبط"
+    TOKEN = "8523151879:AAHfkCf-WBthGgGeihW10RjD1YX58l9pkLc"
 
     application = ApplicationBuilder().token(TOKEN).build()
 
