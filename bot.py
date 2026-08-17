@@ -6,10 +6,14 @@ import time
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ===== الإعدادات =====
-BOT_TOKEN = "توكن البوت هنا"
-CHANNEL_USERNAME = "@قناة_البوت"   # ضع معرف القناة العام (مثل @mychannel)
-ADMIN_ID = 123456789               # ضع معرف التلغرام الخاص بك (لإدارة الطلبات)
+import os  # تأكد من وجود هذا السطر في الأعلى (موجود بالفعل)
 
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+CHANNEL_USERNAME = os.environ.get('CHANNEL_USERNAME')
+ADMIN_ID = int(os.environ.get('ADMIN_ID', 0))
+# التحقق من وجود المتغيرات
+if not BOT_TOKEN or not CHANNEL_USERNAME or not ADMIN_ID:
+    raise ValueError("❌ المتغيرات البيئية غير مكتملة! تأكد من تعيين BOT_TOKEN, CHANNEL_USERNAME, ADMIN_ID")
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # ===== التعامل مع ملف البيانات =====
